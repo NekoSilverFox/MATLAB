@@ -28,6 +28,12 @@
 
 
 
+## MatLab 特殊之处
+
+- **MATLAB 的索引是从 1 开始索引！**
+
+
+
 ## 数据类型
 
 ### 数字
@@ -137,11 +143,57 @@ str = 'Silverfox'	%% 注意要用单引号
 
 ### 元胞数组
 
+元胞数组是 MAILAB 中特有的一种数据类型，是数组的一种，其内部元素可以是属于不同的数据类型，概念理解上，可以认为它和 C 语言里面的结构体、C++ 里面的对象。元胞数组是 MAILAB 中的特色数据类型，它不同于其它数据类型（如字符型，字符数组或者叫字符串，以及一般的算术数据和数组）。它特有的存取数据方法決定了它的特点，它有给人一种查询信息的感觉，可以逐渐追踪一直到所有的变量全部翻译成基本的数据信息。它的 class 函数输出就是 cell（细胞之意）。
 
+- **定义**
+
+    `A = cell(行, 列)`
+
+    
+
+- **取值**
+
+    > MATLAB 的索引是从 1 开始索引！
+
+    `cell{n}`
 
 
 
 ### 结构体
+
+类似于 Python 中的字典
+
+
+
+- **定义**
+
+    `A = struct(key1, values1, key2, values2, ...)`
+
+
+
+```matlab
+books = struct('name', {{'Machine Learing', 'Data Mining'}}, 'price', [30 40])
+>>>
+books = 包含以下字段的 struct：
+     name: {'Machine Learing'  'Data Mining'}
+    price: [30 40]
+
+
+books.name
+>>>
+ans = 1×2 cell    
+'Machine Learing''Data Mining'
+
+
+books.name(1)  %% 用小括号取值，取出的是 cell 数组！
+>>>
+ans = 1x1 cell 数组
+    {'Machine Learing'}
+
+books.name{1}   %% 用小括号取值，取出的是字符串！
+>>>
+ans = 'Machine Learing'
+```
 
 
 
@@ -172,6 +224,19 @@ str = 'Silverfox'	%% 注意要用单引号
 
 
 # 数据生成
+
+
+
+## 矩阵类数据生成
+
+| 函数             | 描述                                                      | 备注 |
+| ---------------- | --------------------------------------------------------- | ---- |
+| `zero(row, col)` | 生成 row 行，col 列的矩阵                                 |      |
+| `eye(n)`         | 生成 n*n 的对角为 1 的矩阵                                |      |
+| `magic(n)`       | 生成 n*n 的幻方（矩阵的每列、每行、主副对角线的和都相等） |      |
+|                  |                                                           |      |
+
+
 
 ## 生成全为 0 的矩阵
 
