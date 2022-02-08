@@ -732,7 +732,11 @@ axis([0 20 -1.5 1.5])
 
 <img src="doc/pic/README/image-20220208155551960.png" alt="image-20220208155551960" style="zoom:50%;" />
 
-## 三维立体绘图
+## 三维绘图
+
+### 三维立体绘图
+
+`plot3(X, Y, Z)`
 
 ```matlab
 % 准备数据
@@ -748,3 +752,26 @@ zlabel('t')
 ```
 
 <img src="doc/pic/README/image-20220207194658656.png" alt="image-20220207194658656" style="zoom:50%;" />
+
+
+
+### 三维曲面图
+
+`surf(X, Y, Z)` 函数可以用来做三维曲面图。一般是展示 z=z(x, y) 的图像
+
+首先需要用 `mesharid` 创建好空间上 (x, y) 点
+
+```matlab
+[X, Y] = meshgrid(-2 : 0.1 : 2);
+Z = X .* exp(-X .^ 2 - Y .^2);
+surf(X, Y, Z);
+
+% 设置颜色
+colormap hsv % hsv winter summer 一般用 hsv，这也是默认的
+
+% 色条显示
+colorbar
+```
+
+<img src="doc/pic/README/image-20220208230642921.png" alt="image-20220208230642921" style="zoom:50%;" />
+
